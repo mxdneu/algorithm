@@ -19,3 +19,19 @@ function jumpFloor(number)
         return jumpFloor(number - 1) + jumpFloor(number -2);
     }
 }
+
+// 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
+
+function Power(base, exponent){
+    // write code here
+    var basenum = base;
+    for(let i = 2;i <= Math.abs(exponent);i++){
+        base = base*basenum
+    }
+    if(exponent < 0){
+        base = 1/base;
+    }else if(exponent === 0){
+        base = 1;
+    }
+    return base;
+}
