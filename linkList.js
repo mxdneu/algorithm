@@ -34,3 +34,22 @@ function FindKthToTail(head, k){
     }
     return arr[arr.length -k];
 }
+
+// 输入一个链表，反转链表后，输出新链表的表头
+
+function ReverseList(pHead){
+    if(pHead === null){
+        return false;
+    }
+
+    let p1 = pHead;
+    let p2 = null,
+      temp = null;
+    while(p1){
+        temp = p1.next;
+        p1.next = p2;
+        p2 = p1;
+        p1 = temp;
+    }
+    return p2;
+}
