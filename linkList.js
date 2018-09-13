@@ -53,3 +53,48 @@ function ReverseList(pHead){
     }
     return p2;
 }
+
+//输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
+function Merge(pHead1, pHead2)
+{
+    // write code here
+    let list = {}
+    if(pHead1 === null){
+        return pHead2;
+    } else if (pHead2 === null) {
+        return pHead1;
+    }
+    if(pHead1 > pHead2){
+        list = pHead2;
+        list.next = Merge(pHead1, pHead2.next);
+    } else {
+        list = pHead1;
+        list.next = Merge(pHead2, pHead1.next);
+    }
+    return list;
+}
+
+//输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
+
+function HasSubtree(pRoot1, pRoot2)
+{
+    // write code here
+    if(pRoot1 === null || pRoot2 === null){
+        return false
+    }
+    return isSubTree(pRoot1,pRoot2)||HasSubtree(pRoot1.left,pRoot2)||HasSubtree(pRoot1.right,pRoot2);
+}
+
+function isSubTree(root1,root2){
+    if(!root2){
+        return true;
+    }
+    if(!root1){
+        return false;
+    }
+    if(root1.val === root2.val){
+        return isSubTree(root1.left,root2.left) && isSubTree(root1.right,root2.right);
+    }else{
+        return false;
+    }
+}
