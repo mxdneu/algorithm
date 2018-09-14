@@ -31,3 +31,17 @@ function reConstructBinaryTree(pre, vin){
     }
     return result;
 }
+
+//操作给定的二叉树，将其变换为源二叉树的镜像
+function Mirror(root)
+{
+    // write code here
+    if(root){
+        let tem = {};
+        tem = root.left;
+        root.left = root.right;
+        root.right = tem;
+        Mirror(root.left);
+        Mirror(root.right);
+    }
+}
