@@ -5,3 +5,19 @@ function replaceSpace(str)
     // write code here
     return str.replace(/\s/g,'%20')
 }
+
+// 数字增加千分位
+
+function addThou(num){
+  num = num.toString();
+  var arr = num.split('').reverse();
+  var thou = arr.reduceRight((acc,cur,index) => {
+    if((+index + 1)%3 === 0){
+      acc += ',' + cur;
+    }else{
+      acc += cur;
+    }
+    return acc;
+  })
+  return thou;
+}
