@@ -53,3 +53,78 @@ function reOrderArray(array){
     totalArr = evenArr.concat(oddArr);
     return totalArr;
 }
+// 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。
+function MoreThanHalfNum_Solution(numbers)
+{
+    // write code here
+    var len = numbers.length;
+    if(!len){
+        return 0;
+    }
+    var num = numbers[0];
+    var count = 1;
+    for(let i = 0;i < len;i++){
+        if(num === numbers[i]){
+            count++;
+        }else{
+            count--;
+        }
+        if(count === 0){
+            count = 1;
+            num = numbers[i];
+        }
+    }
+    count = 0;
+    for(let i = 0;i < len;i++){
+        if(num === numbers[i]){
+            count++
+        }
+    }
+    if(count*2 > len){
+        return num
+    }
+    return 0;
+}
+// 输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。
+
+function GetLeastNumbers_Solution(input, k)
+{
+    // write code here
+    var result = [];
+    if(input.length >= k){
+        result = input.sort().slice(0,k);
+    } 
+    return result;
+}
+
+// HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1)
+
+function FindGreatestSumOfSubArray(array)
+{
+    // write code here
+    if(array.length == 0){
+       return; 
+    }
+    var result = array.slice();
+    function Sum(arr){
+        var arr1 = arr.slice();
+        var sum = 0;
+        for(let i = 0;i < arr.length;i++){
+            sum += arr[i];
+            result.push(sum);
+        }
+        arr1.shift();
+        if(arr1.length > 1){
+            Sum(arr1);
+        }
+    }
+    Sum(array);
+    var result = result.sort(function(a,b){
+        return a -b;
+    })
+    return result[result.length-1];
+}
+
+
+
+
