@@ -32,6 +32,34 @@ function reConstructBinaryTree(pre, vin){
     return result;
 }
 
+// 20200615
+function reConstructBinaryTree1(pre, vin)
+{
+    // write code here
+    let result = null;
+    if(pre.length > 1) {
+        const root = pre[0];
+        const leftL = vin.indexOf(root);
+        const rightL = vin.lenght - leftL - 1;
+        const leftPre = pre.slice(1, leftL + 1);
+        const rightPre = pre.slice(1 + leftL);
+        const leftVin = vin.slice(0, leftL);
+        const rightVin = vin.slice(leftL + 1);
+        result = {
+            val: root,
+            left: reConstructBinaryTree1(leftPre, leftVin),
+            right: reConstructBinaryTree1(rightPre, rightVin),
+        }
+    } else if(pre.length === 1) {
+        result = {
+            val: pre[0],
+            left: null,
+            right: null,
+        }
+    }
+    return result;
+}
+
 //操作给定的二叉树，将其变换为源二叉树的镜像
 function Mirror(root)
 {
