@@ -61,15 +61,27 @@ function reConstructBinaryTree1(pre, vin)
 }
 
 //操作给定的二叉树，将其变换为源二叉树的镜像
-function Mirror(root)
-{
-    // write code here
-    if(root){
-        let tem = {};
-        tem = root.left;
-        root.left = root.right;
-        root.right = tem;
-        Mirror(root.left);
-        Mirror(root.right);
-    }
+function Mirror(root) {
+  // write code here
+  if(root){
+      let tem = {};
+      tem = root.left;
+      root.left = root.right;
+      root.right = tem;
+      Mirror(root.left);
+      Mirror(root.right);
+  }
 }
+
+// 层序遍历二叉树，从上到下，从左到右
+
+function topToDown(root) {
+  const point = [];
+  const result = [];
+  if (!root) {
+    point.push(root);
+  }
+  while(point.length) {
+
+  }
+} 
