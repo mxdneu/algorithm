@@ -75,13 +75,30 @@ function Mirror(root) {
 
 // 层序遍历二叉树，从上到下，从左到右
 
-function topToDown(root) {
+function PrintFromTopToBottom(root) {
   const point = [];
   const result = [];
-  if (!root) {
+  if (root) {
     point.push(root);
   }
   while(point.length) {
-
+    const node = point.shift();
+    if (node.left) {
+      point.push(node.left);
+    }
+    if (node.right) {
+      point.push(node.right);
+    }
+    result.push(node.val);
   }
-} 
+  return result;
+}
+
+function treeDepth(root) {
+  if (!root) {
+    return 0;
+  }
+  const left = treeDepth(root.left) + 1;
+  const right = treeDepth(root.right) + 1;
+  return Math.max(left, right);
+}
