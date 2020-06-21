@@ -1,0 +1,19 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "practise algorithm",
+  "main": "binaryTree.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxdneu/algorithm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mxdneu/algorithm/issues"
+  },
+  "homepage": "https://github.com/mxdneu/algorithm#readme"
+}

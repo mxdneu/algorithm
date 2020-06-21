@@ -40,7 +40,7 @@ function reConstructBinaryTree1(pre, vin)
     if(pre.length > 1) {
         const root = pre[0];
         const leftL = vin.indexOf(root);
-        const rightL = vin.lenght - leftL - 1;
+        const rightL = vin.length - leftL - 1;
         const leftPre = pre.slice(1, leftL + 1);
         const rightPre = pre.slice(1 + leftL);
         const leftVin = vin.slice(0, leftL);
@@ -101,4 +101,62 @@ function treeDepth(root) {
   const left = treeDepth(root.left) + 1;
   const right = treeDepth(root.right) + 1;
   return Math.max(left, right);
+}
+
+
+function VerifySquenceOfBST1(sequence)
+{
+  // write code here
+  if(!sequence.length){
+      return false;
+  }
+  return judgeSquence(sequence,0,sequence.length-1);
+}
+
+function judgeSquence(seq,start,end){
+  if(start >= end){
+      return true;
+  }
+  var i = start;
+  while(i < end && seq[i] < seq[end]){
+      i++;
+  }
+  for(var j = i;j < end;j++){
+      if(seq[j] < seq[end]){
+          return false;
+      }
+  }
+  return judgeSquence(seq,start,i-1) && judgeSquence(seq,i,end-1);
+}
+
+// 有问题
+function VerifySquenceOfBST(sequence) {
+  // write code here
+  if (!sequence.length) {
+    return false;
+  }
+  return SubOfBST(sequence, 0, sequence.length - 1);
+}
+
+function SubOfBST(arr, startIndex, endIndex) {
+  if (startIndex >= endIndex || (endIndex - startIndex <= 1 && arr[startIndex] < arr[endIndex])) {
+    return true;
+  }
+  const root = arr[endIndex];
+  let rightStart, rightEnd, leftStart, leftEnd;
+  for(var i = startIndex; i <= endIndex; i++) {
+    if (arr[i] > root) {
+      rightEnd = i - 1;
+      leftStart = i;
+      leftEnd = endIndex - 1;
+      rightStart = startIndex;
+      break;
+    }
+  }
+  for(var j = i; j <= endIndex; j++) {
+    if (root > arr[j]) {
+      return false;
+    }
+  }
+  return SubOfBST(arr, rightStart, rightEnd) && SubOfBST(arr, leftStart, leftEnd);
 }
