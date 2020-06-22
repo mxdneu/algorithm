@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mxdneu/algorithm/issues"
   },
-  "homepage": "https://github.com/mxdneu/algorithm#readme"
+  "homepage": "https://github.com/mxdneu/algorithm#readme",
+  "devDependencies": {
+    "eslint": "^7.3.0"
+  }
 }
