@@ -56,3 +56,18 @@ function MoreThanHalfNum_Solution(numbers){
   }
   return 0;
 }
+
+// 统计一个数字在排序数组中出现的次数。
+
+function GetNumberOfK(data, k){
+    // write code here
+    let location = data.indexOf(k);
+    let count = 0;
+    if(location >= 0){
+        while(data[location] === k){
+            count++;
+            location++;
+        } 
+    }
+    return count;
+}
