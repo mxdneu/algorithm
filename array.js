@@ -71,3 +71,28 @@ function GetNumberOfK(data, k){
     }
     return count;
 }
+
+
+// 一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。
+function FindNumsAppearOnce(array) {
+    // write code here
+    // return list, 比如[a,b]，其中ab是出现一次的两个数字
+    let j = 0;
+    while(array.length > 2) {
+        const index = array[j];
+        let sumBool = true;
+        for(let i = j + 1;i < array.length; i++){
+            if (index === array[i]) {
+                array.splice(j, 1);
+                array.splice(i - 1, 1);
+                sumBool = false;
+                break;
+            }
+        }
+        // 判断判断位是否应该加1
+        if (sumBool) {
+          j++;
+        }
+    }
+    return array;
+}
