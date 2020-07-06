@@ -160,3 +160,24 @@ function SubOfBST(arr, startIndex, endIndex) {
   }
   return SubOfBST(arr, rightStart, rightEnd) && SubOfBST(arr, leftStart, leftEnd);
 }
+
+// 是否是平衡二叉树
+
+function IsBalanced_Solution(pRoot)
+{
+    // write code here
+    if (!pRoot) {
+        return true;
+    }
+    return (Math.abs(treeHeight(pRoot.left) - treeHeight(pRoot.right)) <= 1) 
+    && IsBalanced_Solution(pRoot.left) && IsBalanced_Solution(pRoot.right);
+}
+
+function treeHeight(root) {
+    if(!root){
+        return 0;
+    }
+    const left = treeHeight(root.left) + 1;
+    const right = treeHeight(root.right) + 1;
+    return Math.max(left, right);
+}
