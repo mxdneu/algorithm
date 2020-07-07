@@ -143,3 +143,19 @@ function rectCover(number){
     }
     return result;
 }
+
+
+// 减绳子
+function cutRope(number)
+{
+    if(number<2) return 0;
+    if(number===2) return 1;
+    if(number===3) return 2;
+    let a=Math.floor(number/3)
+    let b=number%3;
+    switch(b){
+        case 0:return Math.pow(3,a);
+        case 1:return Math.pow(3,a-1)*4;
+        case 2:return Math.pow(3,a)*2;   
+    }
+}
