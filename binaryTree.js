@@ -181,3 +181,25 @@ function treeHeight(root) {
     const right = treeHeight(root.right) + 1;
     return Math.max(left, right);
 }
+
+// 判断一个二叉树是否是对称的，就是二叉树和他的镜像二叉树是否相等
+function isSymmetrical(pRoot)
+{
+    if(!pRoot){return true}
+    return judge(pRoot.left,pRoot.right)
+    // write code here
+}
+function judge(left,right){
+    if(right===null&&left===null){
+        return true
+    }
+     if(right!=null&&left!=null){
+        if(right.val===left.val){
+            return judge(right.left,left.right)&&judge(right.right,left.left)
+        }else{
+            return false
+        }
+    }
+     
+    return false
+}
