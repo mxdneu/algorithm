@@ -159,3 +159,31 @@ function cutRope(number)
         case 2:return Math.pow(3,a)*2;   
     }
 }
+
+// 一个长度为5的数组是否是顺子，有四个王，王算0，可以模拟任何数字
+// 思路：先排序，然后计算0的个数和所有间隔的个数，如果有两张以上一样的牌，肯定不是顺子
+function IsContinuous(numbers) {
+    // write code here
+    if (numbers && numbers.length === 0) {
+        return false;
+    }
+    numbers = numbers.sort((a, b) => (a - b));
+    let countZero = 0;
+    let countGap = 0;
+    // 记录0个数，然后重复的直接false
+    for(let i = 0;i < numbers.length -1;i++){
+        if(numbers[i] === 0){
+            countZero++;
+        }
+        if(numbers[i] === numbers[i + 1] && numbers[i] !== 0){
+            return false;
+        }
+        if (numbers[i] !== 0 && numbers[i + 1] !== 0) {
+            countGap += (numbers[i + 1] - numbers[i] - 1);
+        }
+    }
+    if (countZero === countGap || countZero === 4) {
+        return true;
+    }
+    return false;
+}
