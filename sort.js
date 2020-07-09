@@ -21,6 +21,48 @@ function bubblesort(arr){
 	}
 	return result;
 }
+
+// 冒泡排序算法2
+// 时间复杂度，最好O(n), 最坏O(n²), 平均O(n²)
+function bubbleSort1(arr) {
+	const len = arr.length;
+	let exchange, tem;
+	for(let i = 0;i < len;i++) {
+		exchange = false;
+		for(let j = 0;j < len - i -1;j++) {
+			if (arr[j] > arr[j+1]) {
+				tem = arr[j+1];
+				arr[j+1] = arr[j];
+				arr[j] = tem;
+				exchange = true;
+			}
+		}
+		if (!exchange) {
+			return arr;
+		}
+	}
+	return arr;
+}
+
+
+// 选择排序，时间复杂度稳定为O(n²),适用于小数量
+function chooseSort(arr){
+	const len = arr.length;
+	let minNum, tem;
+	for(let i = 0;i < len - 1;i++) {
+		minNum = i;
+		for(let j = i + 1;j < len;j++) {
+			if(arr[i] > arr[j]) {
+				minNum = j;
+			}
+		}
+		tem = arr[i];
+		arr[i] = arr[minNum];
+		arr[minNum] = tem;
+	}
+	return arr;
+}
+
 // 快速排序
 function quickssort(arr){
 	//var len = arr.length;
