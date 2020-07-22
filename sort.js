@@ -63,6 +63,8 @@ function chooseSort(arr){
 	return arr;
 }
 
+// 插入排序
+
 // 快速排序
 function quickssort(arr){
 	//var len = arr.length;

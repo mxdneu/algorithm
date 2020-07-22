@@ -34,3 +34,21 @@ function IsPopOrder(pushV, popV){
     }
     return stack.length == 0;
 }
+
+class Stack{}
+
+// 一个无序栈，只有pop，push，empty，top方法，得出一个有序栈
+function sortStack(stack) {
+  const sort = new Stack();
+  let currentEle = 0;
+  while(!stack.isEmpty()) {
+    currentEle = stack.pop();
+    while(!sort.isEmpty() && currentEle > sort.top()) {
+      stack.push(sort.pop());
+    }
+    sort.push(currentEle);
+  }
+  while(!sort.isEmpty()) {
+    stack.push(sort.pop());
+  }
+}
