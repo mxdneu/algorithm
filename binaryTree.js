@@ -203,3 +203,23 @@ function judge(left,right){
      
     return false
 }
+
+// 给定一个二叉搜索树，找出第k小的节点
+
+function KthNode(pRoot, k)
+{
+    // write code here
+  let result = [];
+  function ldr(pRoot) {
+    if(pRoot !== null){
+      ldr(pRoot.left);
+      result.push(pRoot);
+      ldr(pRoot.right);
+    }
+  }
+  ldr(pRoot);
+  if (k > 0 && k <= result.length) {
+    return result[k - 1];
+  }
+  return null;
+}
