@@ -223,3 +223,30 @@ function KthNode(pRoot, k)
   }
   return null;
 }
+
+// 从上到下打印二叉树，一行为一个数组
+function Print(pRoot)
+{
+    // write code here
+  let result = [];
+  let floor = [];
+  if (pRoot) {
+    floor.push(pRoot);
+  }
+  while(floor.length) {
+    let len = floor.length;
+    let arr = [];
+    for(let i = 0; i < len; i++) {
+      const node = floor.shift();
+      arr.push(node.val);
+      if (node.left) {
+        floor.push(node.left);
+      }
+      if (node.right) {
+        floor.push(node.right);
+      }
+    }
+    result.push(arr);
+  }
+  return result;
+}
