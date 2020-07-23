@@ -236,6 +236,7 @@ function Print(pRoot)
   while(floor.length) {
     let len = floor.length;
     let arr = [];
+    // 和上边的不一样，一层进行一次循环
     for(let i = 0; i < len; i++) {
       const node = floor.shift();
       arr.push(node.val);

@@ -61,7 +61,7 @@ function Sum_Solution(n) {
   return res;
 }
 
-// 和为S的连续正整数序列
+// 和为S的连续正整数序列，双指针，plow和phigh
 
 function FindContinuousSequence(sum)
 {
