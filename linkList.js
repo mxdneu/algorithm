@@ -98,3 +98,34 @@ function isSubTree(root1,root2){
         return false;
     }
 }
+
+
+// 链表去除连续重复
+function ListNode(x){
+    this.val = x;
+    this.next = null;
+}
+
+function deleteDuplication(pHead)
+{
+    // write code here
+  if (pHead === null || pHead.next === null) {
+    return pHead;
+  }
+  let Head = new ListNode(0);
+  let pre = Head;
+  let last = pre.next;
+  while(last !== null) {
+    if (last.next !== null && last.val === last.next.val) {
+      while(last.next !== null && last.val === last.next.val) {
+        last = last.next;
+      }
+      pre.next = last.next;
+      last = last.next;
+    } else {
+      pre = pre.next;
+      last = last.next;
+    }
+  }
+  return Head.next;
+}
