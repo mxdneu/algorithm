@@ -86,3 +86,21 @@ function FindContinuousSequence(sum)
   }
   return result;
 }
+
+
+// 二分查找, 先排序，再查找，一般用快排
+function binarySearch(arr, k) {
+  let lowIndex = 0;
+  let highIndex = arr.length - 1;
+  while(lowIndex <= highIndex) {
+    let mid = Math.floor((highIndex + lowIndex)/2);
+    if (k > arr[mid]) {
+      lowIndex = mid + 1;
+    } else if (k < arr[mid]) {
+      highIndex = mid - 1;
+    } else {
+      return mid;
+    }
+  }
+  return -1;
+}
