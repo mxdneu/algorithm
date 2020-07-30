@@ -44,7 +44,6 @@ function bubbleSort1(arr) {
 	return arr;
 }
 
-
 // 选择排序，时间复杂度稳定为O(n²),适用于小数量
 function chooseSort(arr){
 	const len = arr.length;
