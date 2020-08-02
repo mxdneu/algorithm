@@ -63,6 +63,21 @@ function chooseSort(arr){
 }
 
 // 插入排序
+// 类似打扑克牌的抓牌理牌的顺序
+function insertSort(arr) {
+	const len = arr.length;
+	let preIndex, current;
+	for (let i = 1; i < len; i++) {
+		preIndex = i - 1;
+		current = arr[i];
+		while (preIndex >= 0 && arr[preIndex] > current) {
+			arr[preIndex + 1] = arr[preIndex];
+			preIndex--; 
+		}
+		arr[preIndex + 1] = current;
+	}
+	return arr;
+} 
 
 // 快速排序
 function quickssort(arr){
