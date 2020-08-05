@@ -251,3 +251,17 @@ function Print(pRoot)
   }
   return result;
 }
+
+// 二叉树中序遍历
+var inorderTraversal = function(root) {
+  let result = [];
+  let inorder = node => {
+      if (node) {
+          inorder(node.left);
+          result.push(node.val);
+          inorder(node.right);
+      }
+  }
+  inorder(root);
+  return result;
+};
