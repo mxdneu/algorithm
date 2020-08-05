@@ -180,3 +180,18 @@ function Midone() {
     return low;
     }
 }
+
+function flatArr(arr) {
+  const len = arr.length;
+  let result = [];
+  if (len) {
+    for(let i = 0; i < len; i++){
+      if (Array.isArray(arr[i])) {
+        result = result.concat(flatArr(arr[i]));
+      } else {
+        result.push(arr[i]);
+      }
+    }
+  }
+  return result;
+}

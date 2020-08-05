@@ -104,3 +104,26 @@ function binarySearch(arr, k) {
   }
   return -1;
 }
+
+// 反转数字 https://leetcode-cn.com/problems/reverse-integer/
+/**
+ * @param {number} x
+ * @return {number}
+ */
+var reverse = function(x) {
+  let result = '';
+  const tem = Math.abs(x);
+  let str = tem + '';
+  for(let i = str.length - 1; i >= 0; i--) {
+      result += str[i];
+  }
+  if (x > 0) {
+      result = +result;
+  } else {
+      result = -result;
+  }
+  if (result > (Math.pow(2, 31) - 1) || result < Math.pow(-2, 31)) {
+      return 0;
+  }
+  return result;
+};
