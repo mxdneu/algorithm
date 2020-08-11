@@ -181,6 +181,7 @@ function Midone() {
     }
 }
 
+// 拉平数组
 function flatArr(arr) {
   const len = arr.length;
   let result = [];
