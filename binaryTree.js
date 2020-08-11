@@ -279,3 +279,12 @@ var isSameTree = function(p, q) {
   }
   return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
 };
+
+// 判断一个数，是否是一个二叉树的路径和
+var hasPathSum = function(root, sum) {
+  if (!root) return false;
+  if (root.left === null && root.right === null) {
+      return root.val - sum === 0;
+  }
+  return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+};
