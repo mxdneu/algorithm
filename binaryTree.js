@@ -265,3 +265,17 @@ var inorderTraversal = function(root) {
   inorder(root);
   return result;
 };
+
+// 判断两个二叉树是否完全相等
+var isSameTree = function(p, q) {
+  if (p === null && q === null) {
+      return true;
+  }
+  if (p === null || q === null) {
+      return false;
+  }
+  if (p.val !== q.val) {
+      return false;
+  }
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+};

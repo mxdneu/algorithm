@@ -64,7 +64,7 @@ function Merge(pHead1, pHead2)
     } else if (pHead2 === null) {
         return pHead1;
     }
-    if(pHead1 > pHead2){
+    if(pHead1.val > pHead2.val){
         list = pHead2;
         list.next = Merge(pHead1, pHead2.next);
     } else {
