@@ -196,3 +196,25 @@ function flatArr(arr) {
   }
   return result;
 }
+
+// 任意不重复数组全排列，例如[1,2,3]他的全排列是[1,2,3],[1,3,2],[2,3,1],[2,1,3],[3,1,2],[3,2,1]
+
+function allRange(arr) {
+  const list = [];
+  backTrack(list, [], arr);
+  return list;
+}
+
+function backTrack(list, temList, arr) {
+  if (temList.length === arr.length) {
+    list.push([...temList]);
+    return;
+  }
+  for(let i = 0; i < arr.length; i++) {
+    if (!temList.includes(arr[i])) {
+      temList.push(arr[i]);
+      backTrack(list, temList, arr);
+      temList.pop();
+    }
+  }
+}
