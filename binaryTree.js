@@ -288,3 +288,34 @@ var hasPathSum = function(root, sum) {
   }
   return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
 };
+
+
+// 二叉树的右视图，利用bfs
+var rightSideView = function(root) {
+  let floor = [];
+  let result = [];
+  let right = [];
+  if (root) {
+      floor.push(root);
+  }
+  while (floor.length) {
+      let arr = [];
+      let len = floor.length;
+      for(let i = 0; i < len; i++) {
+          const node = floor.shift();
+          arr.push(node.val);
+          if (node.left) {
+              floor.push(node.left);
+          }
+          if (node.right) {
+              floor.push(node.right);
+          }
+      }
+      result.push(arr);
+  }
+  result.forEach(item => {
+      let len = item.length;
+      right.push(item[len - 1]);
+  })
+  return right;
+};

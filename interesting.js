@@ -187,3 +187,14 @@ function IsContinuous(numbers) {
     }
     return false;
 }
+
+// 洗牌算法
+
+function shuffleCard(arr) {
+  const target = [];
+  while(arr.length) {
+    const index = Math.floor(Math.random() * arr.length);
+    target.push(arr.splice(index, 1)[0]);
+  }
+  return target;
+}
