@@ -48,3 +48,29 @@ var longestCommonPrefix = function(strs) {
   }
   return strs[min]
 };
+
+// ip地址 leetcode 93
+// 字符串切割，满足单字段，在[0, 255]
+var restoreIpAddresses = function(s) {
+  const res = [];
+  const dfs = function(subRes, start) {
+      if (subRes.length === 4 && start === s.length) {
+          res.push(subRes.join('.'));
+          return;
+      }
+      if (subRes.length === 4 && start < s.length) {
+          return;
+      }
+      for (let i = 1; i < 4; i++) {
+          if (start + i - 1 >= s.length) return;
+          if (i !== 1 && s[start] == 0) return;
+          const str = s.substr(start, i);
+          if (str.length === 3 && +str > 255) return;
+          subRes.push(str);
+          dfs(subRes, start + i);
+          subRes.pop();
+      }
+  }
+  dfs([], 0);
+  return res;
+};

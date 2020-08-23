@@ -218,3 +218,34 @@ function backTrack(list, temList, arr) {
     }
   }
 }
+
+// 数组去重
+function dupliArr(arr) {
+  var tem = arr.filter((item, index) => {
+    return arr.indexOf(item) == index;
+  })
+  return tem;
+}
+
+// 合并两个有序数组 nums1和nums2，m，n代表这两个数组合并的位数
+var merge = function(nums1, m, nums2, n){
+  const result = [];
+  const len1 = nums1.length;
+  const len2 = nums2.length;
+  while((nums1.length !== 0 || nums2.length !==0) && len1 - nums1.length <= m && len2 - nums2.length <= n) {
+    if (nums1.length === 0 && nums2.length !== 0) {
+      result.push(nums2.shift());
+    }
+    if (nums2.length === 0 && nums1.length !== 0) {
+      result.push(nums1.shift());
+    }
+    if (nums1.length && nums2.length) {
+      if (nums1[0] >= nums2[0]) {
+        result.push(nums2.shift());
+      } else {
+        result.push(nums1.shift());
+      }
+    } 
+  }
+  return result;
+}
