@@ -344,3 +344,18 @@ function isSubTree(root1,root2){
         return false;
     }
 }
+
+// leetcode 108，将排序数组转换成二叉搜索树，同时满足是平衡二叉树
+function TreeNode(val) {
+  this.val = val;
+  this.left = this.right = null;
+}
+
+var sortedArrayToBST = function(nums) {
+  if (!nums.length) return null;
+  const mid = Math.floor((nums.length)/2)
+  const node = new TreeNode(nums[mid]);
+  node.left = sortedArrayToBST(nums.slice(0, mid));
+  node.right = sortedArrayToBST(nums.slice(mid + 1));
+  return node;
+};
