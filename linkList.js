@@ -54,6 +54,18 @@ function ReverseList(pHead){
     return p2;
 }
 
+function reverseListNew(pHead) {
+    let cur = pHead;
+    let prev = null;
+    while (cur) {
+        let next = cur.next;
+        cur.next = prev;
+        prev = cur;
+        cur = next;
+    }
+    return prev;
+}
+
 //输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
 function Merge(pHead1, pHead2)
 {
