@@ -74,31 +74,6 @@ function Merge(pHead1, pHead2)
     return list;
 }
 
-//输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
-
-function HasSubtree(pRoot1, pRoot2)
-{
-    // write code here
-    if(pRoot1 === null || pRoot2 === null){
-        return false
-    }
-    return isSubTree(pRoot1,pRoot2)||HasSubtree(pRoot1.left,pRoot2)||HasSubtree(pRoot1.right,pRoot2);
-}
-
-function isSubTree(root1,root2){
-    if(!root2){
-        return true;
-    }
-    if(!root1){
-        return false;
-    }
-    if(root1.val === root2.val){
-        return isSubTree(root1.left,root2.left) && isSubTree(root1.right,root2.right);
-    }else{
-        return false;
-    }
-}
-
 
 // 链表去除连续重复
 function ListNode(x){
@@ -129,3 +104,22 @@ function deleteDuplication(pHead)
   }
   return Head.next;
 }
+
+
+// 删除排序链表的重复元素
+
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function(head) {
+    let cur = head;
+    while (cur && cur.next) {
+        if (cur.val === cur.next.val) {
+            cur.next = cur.next.next;
+        } else {
+            cur = cur.next;
+        }
+    }
+    return head;
+};

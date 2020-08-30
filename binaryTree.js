@@ -319,3 +319,28 @@ var rightSideView = function(root) {
   })
   return right;
 };
+
+//输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
+
+function HasSubtree(pRoot1, pRoot2)
+{
+    // write code here
+    if(pRoot1 === null || pRoot2 === null){
+        return false
+    }
+    return isSubTree(pRoot1,pRoot2)||HasSubtree(pRoot1.left,pRoot2)||HasSubtree(pRoot1.right,pRoot2);
+}
+
+function isSubTree(root1,root2){
+    if(!root2){
+        return true;
+    }
+    if(!root1){
+        return false;
+    }
+    if(root1.val === root2.val){
+        return isSubTree(root1.left,root2.left) && isSubTree(root1.right,root2.right);
+    }else{
+        return false;
+    }
+}
