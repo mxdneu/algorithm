@@ -198,3 +198,25 @@ function shuffleCard(arr) {
   }
   return target;
 }
+
+// 剑指offer61 是否是顺子
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var isStraight = function(nums) {
+    const sortNum = nums.sort((a, b) => (a - b));
+    let zeroCount = 0;
+    let step = 0;
+    for (let i = 0; i < sortNum.length - 1; i++) {
+        if (sortNum[i] === 0) {
+            zeroCount++;
+        } else {
+            if (sortNum[i + 1] === sortNum[i]) {
+                return false;
+            }
+            step += sortNum[i + 1] - sortNum[i] - 1;
+        }
+    }
+    return zeroCount >= step ? true : false;
+};
